@@ -33,9 +33,19 @@ def logged(request):
 def index(request):
     # if request.user.is_anonymous:
     #     return render(request,'logins.html')
-    messages.success(request,f'hello {MESSAGE_TAGS['name']}')    
+    messages.success(request,f'Hello! {MESSAGE_TAGS['name']}')    
     return render(request,'index.html')
 
 def logoutUser(request):
     logout(request)
     return redirect('/')
+
+def signed(request):
+    if request.method == "POST":
+        name1 = request.POST.get("name")
+        pass2 = request.POST.get("password")
+        log = Logged(name = name1, password = pass2)
+        print('got it')
+        log.save()
+        return redirect("/")
+    return render(request,'sign.html')
