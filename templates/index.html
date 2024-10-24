@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% block title %}Home |{% endblock title %}
+{% block body %}
+    this is the new home page
+    hello {{request.user}}
+
+{% if messages %}
+        <!-- <ul class="messages"> -->
+    {% for message in messages %}
+        <!-- <li{% if message.tags %} class=""{% endif %}></li> -->
+        <div class="mssg {{ message.tags }}  ">{{ message }}</div>
+    {% endfor %}
+        <!-- </ul> -->
+
+{% endif %}
+{% endblock body %}
