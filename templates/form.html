@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THIS IS MY DOC</title>
+    <style>
+        .box{
+            border: 2px solid red;
+            height: 70vw;
+            width: 60vw;
+            padding: 10px 20px;
+            margin: 0 auto;
+        }
+        .prob{
+            border: 2px solid red;
+            float: right;
+            overflow: auto;
+            min-width: 20%;
+            margin: 10px 0px;
+            clear: both;
+
+        }
+        .person{
+            border: 2px solid green;
+
+        }
+        h3{
+            /* border: 2px solid yellow; */
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="/template" class="myform"  method="POST">
+        {% csrf_token %}
+
+        <!-- <input type="text" name = 'name' placeholder="Name"> -->
+        <input type="radio" name="temp" id="radio" value="relation issue">
+        <label for="radio">relation issue</label><br>
+        <input type="radio" name="temp2" id="radio2" value="class issue">
+        <label for="radio2">class issue</label><br>
+        <input type="radio" name="temp3" id="radio3" value="study issue">
+        <label for="radio3">study issue</label><br>
+        <input type="radio" name="temp4" id="radio4" value="how to handle club and study together">
+        <label for="radio4">how to handle club and study together</label>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+       
+    
+</body>
+</html>

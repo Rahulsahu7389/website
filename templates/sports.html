@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Community</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #ecedf8;
+        }
+
+        header {
+            background: #1F3A93;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            width: 80%;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .event {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #007bff;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            max-width: 1200px;
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .card-list .card-item {
+            background: #fff;
+            padding: 6px;
+            border-radius: 8px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
+            list-style: none;
+            cursor: pointer;
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: border 0.5s ease;
+        }
+
+        .card-list .card-item:hover {
+            border: 2px solid #000;
+        }
+
+        .card-list .card-item img {
+            width: 80%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .card-list span {
+            display: inline-block;
+            background: #F7DFF5;
+            margin-top: 32px;
+            padding: 8px 15px;
+            font-size: 0.75rem;
+            border-radius: 0px;
+            font-weight: 600;
+        }
+
+        .card-list .developer {
+            background-color: #F7DFF5;
+            color: #B22485;
+        }
+
+        .card-list .designer {
+            background-color: #d1e8ff;
+            color: #2968a8;
+        }
+
+        .card-list .editor {
+            background-color: #d6f8d6;
+            color: #205c20;
+        }
+
+        .card-item h3 {
+            color: #000;
+            font-size: 1.438rem;
+            margin-top: 28px;
+            font-weight: 600;
+        }
+
+        .card-item .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-35deg);
+            height: 40px;
+            width: 40px;
+            color: #000;
+            border: 1px solid #000;
+            border-radius: 50%;
+            margin-top: 40px;
+            transition: 0.2s ease;
+        }
+
+        #club-form,
+        #clubs {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-list .card-item:hover .arrow {
+            background: #000;
+            color: #fff;
+        }
+
+        @media (max-width: 1200px) {
+            .card-list .card-item {
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 980px) {
+            .card-list {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to the Sports Community</h1>
+        <p>Unleash and show your skills in various sports</p>
+    </header>
+
+    <script>
+        document.getElementById('submit-event').addEventListener('click', function () {
+            const eventName = document.getElementById('event-name').value;
+            const eventDate = document.getElementById('event-date').value;
+            const eventLocation = document.getElementById('event-location').value;
+            const eventDescription = document.getElementById('event-description').value;
+
+            if (eventName && eventDate && eventLocation && eventDescription) {
+                const eventList = document.getElementById('event-list');
+                const eventDiv = document.createElement('div');
+                eventDiv.classList.add('event');
+                eventDiv.innerHTML = `<strong>${eventName}</strong><br><em>${eventDate} at ${eventLocation}</em><p>${eventDescription}</p>`;
+                eventList.appendChild(eventDiv);
+
+                // Clear the input fields
+                document.getElementById('event-name').value = '';
+                document.getElementById('event-date').value = '';
+                document.getElementById('event-location').value = '';
+                document.getElementById('event-description').value = '';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+
+
+    <main>
+        <div class="card-list">
+            <a href="#" class="card-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmrAeZdL_2YdxePIyukBYsoc-BDvYl6UA-8Q&s"
+                    alt="Card Image">
+                <span class="developer">INTER NIT</span>
+                <h3>A sport event to showcase your skillS in other colleges.........</h3>
+
+            </a>
+            <a href="#" class="card-item">
+                <img src="https://media.licdn.com/dms/image/v2/C5603AQECqeNFe4C5pw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1615708259817?e=2147483647&v=beta&t=lVkq9FG7tmtCDELvlsOkvV2YcpPoMWh_MEXU5GJ_3_E"
+                    alt="Card Image" width="100px">
+                <span class="designer">SAMAR</span>
+                <h3>The annual College sport fest</h3>
+
+            </a>
+            <a href="#" class="card-item">
+                <img src="https://superblog.supercdn.cloud/site_cuid_clr6oh1no0006rmr89yhkxgu8/images/various-sport-equipments-generative-ai-1706958639790-compressed.jpg"
+                    alt="Card Image">
+                <span class="editor"> Sports Event</span>
+                <h3>......</h3>
+                <br>
+
+
+
+    </main>
+    <section id="club-form">
+        <h2>Create a new sport event</h2>
+        <input type="text" id="club-name" placeholder="Event Name" required>
+        <textarea id="club-description" placeholder="Event Description" required></textarea>
+        <input type="date" placeholder="Date of event">
+        <input type="time" placeholder="time ">
+        <button id="submit-club">Add Event</button>
+    </section>
+    <footer>
+        <p>&copy; 2024 Sports Community</p>
+    </footer>
+
+</body>
+
+</html>
