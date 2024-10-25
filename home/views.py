@@ -5,7 +5,7 @@ from home.models import Logged,Templ,Template1
 from django.contrib import messages
 
 MESSAGE_TAGS = {
-    'name':'ram'
+    'name':'Rohan'
     
 }
 
@@ -53,30 +53,30 @@ def signed(request):
     return render(request,'sign.html')
 
 def temple(request):
-    l1 = []
-    l2 = []
+    # l1 = []
+    # l2 = []
     if request.method == "POST":
-        t1 = request.POST.get("temp")
-        t2 = request.POST.get("temp2")
-        t3 = request.POST.get("temp3")
-        t4 = request.POST.get("temp4")
+        t1 = request.POST.get("name")
+        t2 = request.POST.get("branch")
+        # t3 = request.POST.get("temp3")
+        # t4 = request.POST.get("temp4")
         # print(t1,t2,t3,t4)
 
-        l1.append(t1)
-        l1.append(t2)
-        l1.append(t3)
-        l1.append(t4)
-        for i in range(4):
-            if l1[i] == None: 
-                l2.append('none')
-            else:
-                l2.append(l1[i])
-        (tm1,tm2,tm3,tm4) = tuple(l2)
-        print(tm1,tm2,tm3,tm4)
+        # l1.append(t1)
+        # l1.append(t2)
+        # l1.append(t3)
+        # l1.append(t4)
+        # for i in range(4):
+        #     if l1[i] == None: 
+        #         l2.append('none')
+        #     else:
+        #         l2.append(l1[i])
+        # (tm1,tm2,tm3,tm4) = tuple(l2)
+        # print(tm1,tm2,tm3,tm4)
                 
-        tmplt = Template1(name1 = tm1,name2 = tm2,name3 = tm3,name4 = tm4, name5 = MESSAGE_TAGS['name'] )
+        tmplt = Template1(name1 = t1,name2 = t2,name3 = "none",name4 = "none", name5 = MESSAGE_TAGS['name'] )
         tmplt.save()
-        return redirect("/template")
+        return redirect("/query")
     return render(request,"form.html")
 
 def acad(request):
@@ -87,3 +87,19 @@ def clubs(request):
 
 def sports(request):
     return render(request,'sports.html')
+
+def queries(request):
+    global MESSAGE_TAGS
+    context = {}
+    data = Template1.objects.all()
+    for i in data:
+
+        if i.name5 == MESSAGE_TAGS['name']:
+            print(i,i.name5)
+            context['year'] = i.name1
+            context['branch'] = i.name2
+    print(context)
+
+
+    return render(request,'query.html',context)
+

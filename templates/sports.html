@@ -14,6 +14,36 @@
             padding: 0;
             background-color: #ecedf8;
         }
+        
+
+        h1, h2 {
+            color: #333;
+        }
+
+        #event-form1 {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        form input {
+            margin-bottom: 10px;
+        }
+
+        form button {
+            display: block;
+            margin-top: 10px;
+        }
+
+        #event-details {
+            margin-top: 20px;
+            margin: 20px auto;
+        }
+
+
 
         header {
             background: #1F3A93;
@@ -35,8 +65,7 @@
             color: #007bff;
         }
 
-        input,
-        textarea {
+        input,textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -175,39 +204,58 @@
                 margin: 0 auto;
             }
         }
+        .mydiv{
+            border: 2px solid #3498db; /* Color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Space inside the border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        form{
+            width: 75vh;
+            margin: 0% auto;
+        }
+        .upper{
+            font-family: Playwrite England SemiJoined;
+            width: 60%;
+            margin: 0% auto;
+            border: 2px solid rgb(227, 215, 215);
+            border-radius: 4%;
+            width: 80%;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display:flex;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            max-width: 1200px;
+            padding: 10px;
+            gap: 10px;
+        }
+        a{font-weight: bolder;
+        color: #f0e6e6;
+       
+        }
+
+        @media screen and (max-width: 980px) {
+            .upper {
+                margin: 0 auto;
+            }
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <h1>Welcome to the Sports Community</h1>
         <p>Unleash and show your skills in various sports</p>
+        <a href="/home">HOME</a>
     </header>
 
-    <script>
-        document.getElementById('submit-event').addEventListener('click', function () {
-            const eventName = document.getElementById('event-name').value;
-            const eventDate = document.getElementById('event-date').value;
-            const eventLocation = document.getElementById('event-location').value;
-            const eventDescription = document.getElementById('event-description').value;
-
-            if (eventName && eventDate && eventLocation && eventDescription) {
-                const eventList = document.getElementById('event-list');
-                const eventDiv = document.createElement('div');
-                eventDiv.classList.add('event');
-                eventDiv.innerHTML = `<strong>${eventName}</strong><br><em>${eventDate} at ${eventLocation}</em><p>${eventDescription}</p>`;
-                eventList.appendChild(eventDiv);
-
-                // Clear the input fields
-                document.getElementById('event-name').value = '';
-                document.getElementById('event-date').value = '';
-                document.getElementById('event-location').value = '';
-                document.getElementById('event-description').value = '';
-            } else {
-                alert('Please fill in all fields.');
-            }
-        });
-    </script>
+    
 
 
     <main>
@@ -232,22 +280,116 @@
                 <span class="editor"> Sports Event</span>
                 <h3>......</h3>
                 <br>
-
-
+            </a>
+        </div>
 
     </main>
-    <section id="club-form">
-        <h2>Create a new sport event</h2>
-        <input type="text" id="club-name" placeholder="Event Name" required>
-        <textarea id="club-description" placeholder="Event Description" required></textarea>
-        <input type="date" placeholder="Date of event">
-        <input type="time" placeholder="time ">
-        <button id="submit-club">Add Event</button>
-    </section>
+    
+    <div class="upper">
+
+        <form id="event-form1">
+            <label for="name">Team:</label>
+            <input type="text" id="name" required>
+            
+            <label for="time">Time:</label>
+            <input type="time" id="time" required>
+            <label for="date">date:</label>
+            <input type="date" id="date" required>
+            <label for="location">location:</label>
+            <input type="text" id="location" required>
+            
+            <button type="submit">Submit</button>
+        </form><br>
+        
+        <h2>Event Details:</h2>
+        <div id="event-details"></div>
+    </div>
+
     <footer>
         <p>&copy; 2024 Sports Community</p>
     </footer>
 
 </body>
+<script>
+    document.getElementById('event-form1').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const time = document.getElementById('time').value;
+    const date = document.getElementById('date').value;
+    const location = document.getElementById('location').value;
+
+    const eventDetails = document.getElementById('event-details');
+    // eventDetails.innerHTML = `<p>Name: ${name}</p><p>Time: ${time}</p><p>Date: ${date}</p><p>Location: ${location}</p>`;
+    
+    var cons = document.createElement('div');
+    cons.setAttribute('class','mydiv');
+    cons.innerHTML += `<p>Team: ${name}</p><p>Time: ${time}</p><p>Date: ${date}</p><p>Location: ${location}</p>`;
+    eventDetails.append(cons)
+
+
+});
+
+    
+
+        // document.getElementById('submit-club').addEventListener('click', function() {
+        //     // Get values from input fields
+        //     const eventName = document.getElementById('event-name').value;
+        //     const eventDescription = document.getElementById('event-description').value;
+        //     const eventdate = document.getElementById('event-date').value;
+        //     const eventtime = document.getElementById('event-time').value;
+        //     const eventlocation = document.getElementById('event-location').value;
+
+        //     // Validation: check if inputs are not empty
+        //     // if (clubName.trim() === '' || clubDescription.trim() === '') {
+        //     //     alert('Please fill out both fields!');
+        //     //     return;
+        //     // }
+
+        //     // Create new club card
+        //     const newClub = document.createElement('div');
+        //     newClub.classList.add('club-card');
+            
+        //     // const clubLink = document.createElement('a');
+        //     // clubLink.textContent = clubName;
+        //     // clubLink.href = "#"; // Default link, can be modified later
+        //     // clubLink.target = "_blank";
+            
+        //     const clubname = document.createElement('p');
+        //     clubname.textContent = eventName;
+        //     const clubdate = document.createElement('p');
+        //     clubdate.textContent = clubdate;
+        //     const clubtime = document.createElement('p');
+        //     clubtime.textContent = eventtime;
+        //     const clublocation = document.createElement('p');
+        //     clublocation.textContent = eventlocation;
+        //     const clubdesc = document.createElement('p');
+        //     clubdesc.textContent = clubDescription;
+
+        //     // newClub.appendChild(clubLink);
+        //     newClub.appendChild(clubname);
+        //     newClub.appendChild(clubdate);
+        //     newClub.appendChild(clubtime);
+        //     newClub.appendChild(clublocation);
+        //     newClub.appendChild(clubdesc);
+
+        //     // Add new club to the available clubs section
+        //     document.getElementById('main').appendChild(newClub);
+
+        //     // Clear input fields
+        //     document.getElementById('event-name').value = '';
+        //     document.getElementById('event-date').value = '';
+        //     document.getElementById('event-location').value = '';
+        //     document.getElementById('event-time').value = '';
+        //     document.getElementById('event-description').value = '';
+
+        //     // Show success message
+        //     const message = document.getElementById('main');
+        //     message.style.display = 'block';
+        //     setTimeout(() => {
+        //         message.style.display = 'none';
+        //     }, 2000);
+        // });
+</script>
 
 </html>
